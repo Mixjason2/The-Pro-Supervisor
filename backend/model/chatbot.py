@@ -14,6 +14,7 @@ Design decisions:
   - Text truncation ก่อนส่ง API เสมอ
   - Exception ทุก kind ถูก catch และคืน error string (ไม่ crash server)
 """
+import os
 
 from __future__ import annotations
 
@@ -29,7 +30,7 @@ _API_BASE_URL = "https://openrouter.ai/api/v1"
 
 # ── Replace with env variable in production ──────────────────────
 # import os; _API_KEY = os.environ["OPENROUTER_API_KEY"]
-_API_KEY = "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"
+_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 
 # ══════════════════════════════════════════════════════════════════
