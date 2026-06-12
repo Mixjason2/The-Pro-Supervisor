@@ -1,0 +1,177 @@
+/* ══════════════════════════════════════════════════════════════════
+   globals.css — The Pro Supervisor Design System
+   ══════════════════════════════════════════════════════════════════
+
+   Design tokens:
+     --color-bg          #F8F6F5   page background
+     --color-surface     #ffffff   card background
+     --color-border      #e8e4e0   card border
+     --color-text        #252832   primary text
+     --color-muted       #8a7f72   secondary text
+     --color-accent      #D08E37   golden accent (buttons)
+     --color-blue        #378ADD   blue accent (AI/info)
+     --radius-card       16px
+     --radius-input      10px
+
+   Components:
+     .container   — max-width centered wrapper
+     .card        — white surface card
+     .input       — text input / textarea
+     .btn         — inline button
+     .btn-full    — full-width button
+     .row         — flex row
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Tailwind (ถ้าใช้) ───────────────────────────────────────────── */
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Reset ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #F8F6F5;
+  color: #252832;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ──────────────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem;   /* padding-bottom เผื่อ ChatBox FAB */
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e4e0;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(37, 40, 50, 0.06);
+}
+
+/* ── Input / Textarea ────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9d4ce;
+  border-radius: 10px;
+  background: #faf9f8;
+  color: #252832;
+  font-size: 14px;
+  font-family: 'Sarabun', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: #D08E37;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #D08E37;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Sarabun', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  background: #b87a2e;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+  background: #9e6827;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Full-width variant */
+.btn-full {
+  width: 100%;
+  padding: 12px;
+  background: #D08E37;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'Sarabun', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-full:hover:not(:disabled) {
+  background: #b87a2e;
+}
+
+.btn-full:active:not(:disabled) {
+  transform: scale(0.98);
+  background: #9e6827;
+}
+
+.btn-full:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Flex row helper ─────────────────────────────────────────────── */
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Animations ──────────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chatSlide {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes dot {
+  0%, 80%, 100% { transform: scale(0.55); opacity: 0.35; }
+  40%            { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Scrollbar (Webkit) ─────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d9d4ce; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b5a999; }
